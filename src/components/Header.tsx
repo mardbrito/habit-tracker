@@ -1,6 +1,6 @@
 import { format, isToday } from "date-fns";
 import { Button } from "./Button";
-import { useHabits } from "../context/useHabits";
+import { useHabitsStore } from "../stores/habitsStore";
 
 type HeaderProps = {
   visibleDates: Date[];
@@ -9,7 +9,7 @@ type HeaderProps = {
 };
 
 export function Header({ visibleDates, onPrev, onNext }: HeaderProps) {
-  const { habits } = useHabits();
+  const habits = useHabitsStore((state) => state.habits);
   const doneToday = habits.filter((h) =>
     h.completions.some((c) => isToday(c)),
   ).length;

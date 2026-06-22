@@ -1,4 +1,4 @@
-import { useHabits } from "../context/useHabits";
+import { useHabitsStore } from "../stores/habitsStore";
 import { HabitItem } from "./HabitItem";
 
 export type Habit = {
@@ -12,7 +12,7 @@ type HabitListProps = {
 };
 
 export function HabitList({ visibleDates }: HabitListProps) {
-  const { habits } = useHabits();
+  const habits = useHabitsStore((state) => state.habits);
 
   if (habits.length === 0) {
     return (

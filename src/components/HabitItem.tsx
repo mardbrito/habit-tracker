@@ -1,6 +1,6 @@
 import { format, isFuture, isSameDay, subDays } from "date-fns";
-import { useHabits, type Habit } from "../context/useHabits";
 import { Button } from "./Button";
+import { useHabitsStore, type Habit } from "../stores/habitsStore";
 
 type HabitItemProps = {
   habit: Habit;
@@ -8,7 +8,8 @@ type HabitItemProps = {
 };
 
 export function HabitItem({ habit, visibleDates }: HabitItemProps) {
-  const { deleteHabit, toggleHabit } = useHabits();
+  const deleteHabit = useHabitsStore((state) => state.deleteHabit);
+  const toggleHabit = useHabitsStore((state) => state.toggleHabit);
   const streak = getStreak(habit.completions);
 
   return (

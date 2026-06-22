@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { HabitForm } from "./HabitForm";
-import { HabitList } from "./HabitList";
-import { Header } from "./Header";
+import { HabitForm } from "./components/HabitForm";
+import { HabitList } from "./components/HabitList";
+import { Header } from "./components/Header";
 import { HabitProvider } from "./context/habitProvider";
 import { addWeeks, eachDayOfInterval, endOfWeek, startOfWeek } from "date-fns";
 

@@ -1,6 +1,6 @@
 import { useState, type SubmitEvent } from "react";
 import { Button } from "./Button";
-import { useHabits } from "./context/useHabits";
+import { useHabits } from "../context/useHabits";
 
 export function HabitForm() {
   const { addHabit } = useHabits();

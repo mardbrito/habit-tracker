@@ -1,6 +1,6 @@
 import { format, isToday } from "date-fns";
 import { Button } from "./Button";
-import { useHabits } from "./context/useHabits";
+import { useHabits } from "../context/useHabits";
 
 type HeaderProps = {
   visibleDates: Date[];

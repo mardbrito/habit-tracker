@@ -51,11 +51,19 @@ export function HabitItem({ habit, visibleDates }: HabitItemProps) {
   );
 }
 
-function getStreak(completions: Date[]) {
-  let streak = 0;
-  let date = new Date();
+function getStreak(completions: (Date | string)[]) {
+  if (completions.length === 0) return 0;
 
-  while (completions.some((c) => isSameDay(c, date))) {
+  const dates = completions.map((c) =>
+    typeof c === "string" ? new Date(c) : c,
+  );
+
+  const sorted = dates.sort((a, b) => b.getTime() - a.getTime());
+
+  let streak = 1;
+  let date = sorted[0];
+
+  while (dates.some((c) => isSameDay(c, subDays(date, 1)))) {
     streak++;
     date = subDays(date, 1);
   }
